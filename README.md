@@ -50,4 +50,4 @@ también ofrece un botón para ponerse como launcher por defecto.)
 ## Descarga
 
 APK publicado en
-[releases](https://github.com/imdotrino/android-launcher/releases/latest).
+[releases](https://github.com/imdotrino/dotrino-android-launcher/releases/latest).

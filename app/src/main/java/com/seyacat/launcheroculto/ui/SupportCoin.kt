@@ -41,7 +41,7 @@ import androidx.compose.ui.unit.dp
  */
 private const val KOFI_URL = "https://ko-fi.com/dotrino"
 private const val DISCORD_URL = "https://discord.gg/D648uq7cth"
-private const val APP_URL = "https://github.com/imdotrino/android-launcher"
+private const val APP_URL = "https://github.com/imdotrino/dotrino-android-launcher"
 
 @Composable
 fun SupportCoin(lang: String, modifier: Modifier = Modifier) {
