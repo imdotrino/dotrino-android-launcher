@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Pseudo-app "Apps ocultas": logo Dotrino (estrella sobre cuadro rosa)
+     con un ojo en la esquina inferior derecha (revelar/ver lo oculto). -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="120"
+    android:viewportHeight="120">
+
+    <!-- Fondo redondeado rosa Dotrino -->
+    <path
+        android:fillColor="#F43F5E"
+        android:pathData="M26,0 H94 A26,26 0 0 1 120,26 V94 A26,26 0 0 1 94,120 H26 A26,26 0 0 1 0,94 V26 A26,26 0 0 1 26,0 Z" />
+
+    <!-- Recuadro blanco interior -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M45,33 H75 A12,12 0 0 1 87,45 V75 A12,12 0 0 1 75,87 H45 A12,12 0 0 1 33,75 V45 A12,12 0 0 1 45,33 Z" />
+
+    <!-- Estrella rosa -->
+    <path
+        android:fillColor="#F43F5E"
+        android:pathData="M60,42 l5.4,11 12.1,1.8 -8.8,8.5 2.1,12 -10.8,-5.7 -10.8,5.7 2.1,-12 -8.8,-8.5 12.1,-1.8 Z" />
+
+    <!-- Badge del ojo (círculo oscuro) -->
+    <path
+        android:fillColor="#1F2933"
+        android:pathData="M96,96 m-23,0 a23,23 0 1,0 46,0 a23,23 0 1,0 -46,0" />
+
+    <!-- Forma del ojo (blanco) -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M84,96 Q96,86 108,96 Q96,106 84,96 Z" />
+
+    <!-- Pupila -->
+    <path
+        android:fillColor="#1F2933"
+        android:pathData="M96,96 m-4,0 a4,4 0 1,0 8,0 a4,4 0 1,0 -8,0" />
+</vector>

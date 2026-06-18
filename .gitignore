@@ -1,0 +1,20 @@
+*.iml
+.gradle/
+/local.properties
+.idea/
+.DS_Store
+/build/
+/app/build/
+/captures/
+.externalNativeBuild/
+.cxx/
+*.apk
+*.aab
+# Firma release — NO commitear
+keystore.properties
+*.jks
+*.keystore
+node_modules
+dist
+build
+.env
