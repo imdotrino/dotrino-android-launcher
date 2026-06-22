@@ -1,5 +1,7 @@
 # Android Launcher (Dotrino)
 
+> **Parte del ecosistema [Dotrino](https://dotrino.com).** Misión: aplicaciones que resuelven problemas comunes, respetando tu privacidad — sin anuncios, sin cookies, sin rastreo de datos, sin vender tu identidad a nadie.
+
 Launcher (pantalla de inicio) de Android, en Kotlin + Jetpack Compose, parte del
 ecosistema **Dotrino**. Es un launcher con carrusel de apps y la capacidad de
 **ocultar apps** detrás de biometría / patrón.
