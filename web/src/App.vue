@@ -2,7 +2,7 @@
 import { ref, computed, onMounted } from 'vue'
 
 const GITHUB = 'https://github.com/imdotrino/dotrino-android-launcher'
-const APK = GITHUB + '/releases/latest/download/android-launcher.apk'
+const RELEASES = GITHUB + '/releases/latest'
 const DISCORD = 'https://discord.gg/D648uq7cth'
 
 /* ---------------- i18n (es/en · tuteo, sin voseo · lenguaje llano) ---------------- */
@@ -38,7 +38,7 @@ const I18N = {
     dl_lead: 'Gratis y sin tienda de por medio: descargas el archivo y lo instalas tú.',
     dl_btn: 'Descargar APK',
     dl_steps_t: 'Cómo instalarlo',
-    dl_step1: 'Toca "Descargar APK" y abre el archivo cuando termine.',
+    dl_step1: 'Toca "Descargar APK", baja el archivo .apk de la página y ábrelo cuando termine.',
     dl_step2: 'Tu teléfono te pedirá permiso para instalar desde esta fuente: acéptalo (es normal en apps de fuera de la tienda).',
     dl_step3: 'Ábrelo y elígelo como tu pantalla de inicio. Listo.',
     dl_note: 'Para Android 8 o superior.',
@@ -76,7 +76,7 @@ const I18N = {
     dl_lead: 'Free and no store in between: you download the file and install it yourself.',
     dl_btn: 'Download APK',
     dl_steps_t: 'How to install it',
-    dl_step1: 'Tap "Download APK" and open the file when it finishes.',
+    dl_step1: 'Tap "Download APK", grab the .apk file from the page and open it when it finishes.',
     dl_step2: 'Your phone will ask permission to install from this source: accept (it’s normal for apps from outside the store).',
     dl_step3: 'Open it and set it as your home screen. Done.',
     dl_note: 'For Android 8 or newer.',
@@ -151,7 +151,7 @@ onMounted(() => { document.documentElement.lang = lang.value })
       <section id="download" class="download">
         <h2>{{ t.dl_title }}</h2>
         <p class="lead">{{ t.dl_lead }}</p>
-        <a class="btn btn-primary btn-lg" :href="APK" data-testid="download-apk">↓ {{ t.dl_btn }}</a>
+        <a class="btn btn-primary btn-lg" :href="RELEASES" data-testid="download-apk">↓ {{ t.dl_btn }}</a>
 
         <div class="install">
           <h3>{{ t.dl_steps_t }}</h3>
