@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.1.0",
   "type": "module",
-  "description": "P\u00e1gina de android-launcher.dotrino.com: qu\u00e9 es el launcher de Dotrino y descarga del APK.",
+  "description": "Página de android-launcher.dotrino.com: qué es el launcher de Dotrino y descarga del APK.",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -11,7 +11,7 @@
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
-    "@dotrino/support": "0.6.0",
+    "@dotrino/support": "0.8.1",
     "vue": "3.5.13"
   },
   "devDependencies": {
