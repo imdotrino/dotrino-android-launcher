@@ -13,7 +13,9 @@ const commitMeta = {
 export default defineConfig({
   base: '/',
   plugins: [
-    vue(),
+    // Los Web Components del ecosistema (<dotrino-topbar> y compañía) son elementos
+    // nativos, no componentes Vue: sin esto Vue avisa de que no los resuelve.
+    vue({ template: { compilerOptions: { isCustomElement: (tag) => tag.startsWith('dotrino-') } } }),
     commitMeta,
     VitePWA({
       registerType: 'autoUpdate',

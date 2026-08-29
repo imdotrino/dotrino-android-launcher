@@ -26,23 +26,11 @@ h1, h2, h3 { line-height: 1.15; letter-spacing: -0.02em; }
 .page { max-width: 1040px; margin: 0 auto; padding: 0 20px; }
 
 /* ---------- topbar ---------- */
-.topbar {
-  display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
-  padding: 16px 0; padding-top: max(16px, env(safe-area-inset-top));
-}
-.brand { display: flex; align-items: center; gap: 10px; font-weight: 800; text-decoration: none; font-size: 1.1rem; }
-.brand img { display: block; border-radius: 8px; }
-.navlinks { display: flex; gap: 22px; margin-left: 8px; }
+/* La barra la trae <dotrino-topbar> (§5): marca, idioma, support, fila móvil y
+   safe-area son suyos. Aquí solo van los enlaces que la página mete en su slot. */
+.navlinks { display: flex; gap: 22px; }
 .navlinks a { color: var(--muted); text-decoration: none; font-size: .95rem; }
 .navlinks a:hover { color: var(--text); }
-.actions { display: flex; align-items: center; gap: 10px; margin-left: auto; }
-
-.lang-selector { display: inline-flex; border: 1px solid var(--line); border-radius: 999px; overflow: hidden; }
-.lang-selector button {
-  background: transparent; color: var(--muted); border: 0; padding: 5px 11px;
-  font-size: .82rem; font-weight: 700; cursor: pointer;
-}
-.lang-selector button.on { background: var(--accent2); color: #fff; }
 
 /* ---------- buttons ---------- */
 .btn {

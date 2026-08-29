@@ -84,30 +84,33 @@ const I18N = {
     foot_eco: 'Part of the Dotrino ecosystem', foot_src: 'Source', foot_discord: 'Discord',
   },
 }
-const LANG_KEY = 'launcher.lang'
-const lang = ref((localStorage.getItem(LANG_KEY) || (navigator.language || 'es').slice(0, 2)) === 'en' ? 'en' : 'es')
+// El idioma lo lleva <dotrino-topbar> (§5): él tiene el toggle, lo persiste y pone
+// document.documentElement.lang. Aquí solo se escucha su evento para traducir la copy.
+const lang = ref(leerIdioma())
 const t = computed(() => I18N[lang.value])
-const setLang = (l) => { lang.value = l; localStorage.setItem(LANG_KEY, l); document.documentElement.lang = l }
+const onLang = (e) => { lang.value = e.detail?.lang === 'en' ? 'en' : 'es' }
 
-onMounted(() => { document.documentElement.lang = lang.value })
+function leerIdioma () {
+  let guardado
+  try { guardado = localStorage.getItem('dotrino.lang') } catch (_) {}
+  return (guardado || (navigator.language || 'es').slice(0, 2)) === 'en' ? 'en' : 'es'
+}
 </script>
 
 <template>
   <div class="page">
-    <header class="topbar">
-      <a class="brand" href="/"><img src="/icon.svg" alt="" width="30" height="30" /><span>Dotrino&nbsp;Launcher</span></a>
+    <dotrino-topbar
+      brand="Dotrino Launcher"
+      icon="/icon.svg"
+      no-back
+      support-repo="imdotrino/dotrino-android-launcher"
+      :support-discord="DISCORD"
+      @dotrino-lang="onLang">
       <nav class="navlinks">
         <a href="#how">{{ t.nav_how }}</a>
         <a href="#download">{{ t.nav_download }}</a>
       </nav>
-      <div class="actions">
-        <div class="lang-selector" role="group" aria-label="es / en">
-          <button :class="{ on: lang === 'es' }" @click="setLang('es')">ES</button>
-          <button :class="{ on: lang === 'en' }" @click="setLang('en')">EN</button>
-        </div>
-        <dotrino-support href="https://ko-fi.com/dotrino" repo="imdotrino/dotrino-android-launcher" :discord="DISCORD" :lang="lang"></dotrino-support>
-      </div>
-    </header>
+    </dotrino-topbar>
 
     <main>
       <section class="hero">
