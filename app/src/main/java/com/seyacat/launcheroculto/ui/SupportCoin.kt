@@ -104,9 +104,9 @@ private fun SupportDialog(es: Boolean, onDismiss: () -> Unit) {
             Column {
                 Text(
                     if (es)
-                        "Dotrino es autohosteado, sin anuncios ni rastreadores. Si te sirve, invitame un café, sumate a la comunidad o difundilo."
+                        "Dotrino corre en tu propio servidor, sin anuncios y sin llevar cuenta de lo que haces. Si te sirve, invítame un café, únete a la comunidad o compártelo."
                     else
-                        "Dotrino is self-hosted, with no ads or trackers. If it helps you, buy me a coffee, join the community or share it.",
+                        "Dotrino runs on your own server, with no ads and without keeping track of what you do. If it helps you, buy me a coffee, join the community or share it.",
                     style = MaterialTheme.typography.bodyMedium
                 )
                 Column(

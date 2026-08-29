@@ -49,7 +49,7 @@ object Authenticator {
         )
         val info = BiometricPrompt.PromptInfo.Builder()
             .setTitle("Apps ocultas")
-            .setSubtitle("Verificá tu identidad")
+            .setSubtitle("Verifica tu identidad")
             .setAllowedAuthenticators(AUTHENTICATORS)
             .build()
         prompt.authenticate(info)

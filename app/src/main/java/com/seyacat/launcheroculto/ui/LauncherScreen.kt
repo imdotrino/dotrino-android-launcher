@@ -501,7 +501,7 @@ private fun HiddenAppsScreen(
 
         if (hiddenApps.isEmpty()) {
             Text(
-                "No hay apps ocultas. Entrá a Configuración para ocultar alguna.",
+                "No hay apps ocultas. Entra a Configuración para ocultar alguna.",
                 color = Color.White.copy(alpha = 0.7f),
                 style = MaterialTheme.typography.bodyMedium,
                 modifier = Modifier.padding(8.dp)

@@ -23,7 +23,23 @@ import java.security.MessageDigest
 
 class LauncherViewModel(app: Application) : AndroidViewModel(app) {
 
-    private val prefs = app.getSharedPreferences("launcher_oculto", Context.MODE_PRIVATE)
+    private val prefs = app.getSharedPreferences(PREFS, Context.MODE_PRIVATE).also { nuevas ->
+        // La clave se llamaba "launcher_oculto" (§8.1: identificadores en inglés). Se
+        // arrastra una vez lo que el usuario ya tenía guardado, o perdería sus apps ocultas.
+        val viejas = app.getSharedPreferences("launcher_oculto", Context.MODE_PRIVATE)
+        if (nuevas.all.isEmpty() && viejas.all.isNotEmpty()) {
+            nuevas.edit().apply {
+                for ((k, v) in viejas.all) when (v) {
+                    is Set<*> -> putStringSet(k, v.filterIsInstance<String>().toSet())
+                    is String -> putString(k, v)
+                    is Boolean -> putBoolean(k, v)
+                    is Int -> putInt(k, v)
+                    is Long -> putLong(k, v)
+                    is Float -> putFloat(k, v)
+                }
+            }.apply()
+        }
+    }
 
     private val _apps = MutableStateFlow<List<AppInfo>>(emptyList())
     val apps: StateFlow<List<AppInfo>> = _apps.asStateFlow()
@@ -158,7 +174,7 @@ class LauncherViewModel(app: Application) : AndroidViewModel(app) {
             Settings.ACTION_APPLICATION_DETAILS_SETTINGS,
             Uri.parse("package:$pkg")
         ).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-        start(intent, "abrir info de $pkg")
+        start(intent, action = "open app info for $pkg", copy = "abrir la información de $pkg")
     }
 
     /** Lanza el diálogo del sistema para desinstalar la app. */
@@ -167,16 +183,17 @@ class LauncherViewModel(app: Application) : AndroidViewModel(app) {
         val intent = Intent(Intent.ACTION_UNINSTALL_PACKAGE, Uri.parse("package:$pkg"))
             .putExtra(Intent.EXTRA_RETURN_RESULT, false)
             .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-        start(intent, "desinstalar $pkg")
+        start(intent, action = "uninstall $pkg", copy = "desinstalar $pkg")
     }
 
-    private fun start(intent: Intent, what: String) {
+    /** `action` va al log (en inglés, §8.1); `copy` es lo que lee el usuario. */
+    private fun start(intent: Intent, action: String, copy: String) {
         val ctx = getApplication<Application>()
         try {
             ctx.startActivity(intent)
         } catch (e: Exception) {
-            Log.e("LauncherOculto", "No se pudo $what", e)
-            Toast.makeText(ctx, "No se pudo $what: ${e.message}", Toast.LENGTH_LONG).show()
+            Log.e("LauncherOculto", "Could not $action", e)
+            Toast.makeText(ctx, "No se pudo $copy: ${e.message}", Toast.LENGTH_LONG).show()
         }
     }
 
@@ -242,6 +259,9 @@ class LauncherViewModel(app: Application) : AndroidViewModel(app) {
             .joinToString("") { "%02x".format(it) }
 
     companion object {
+        /** Fichero de preferencias. Antes se llamaba "launcher_oculto" (§8.1). */
+        private const val PREFS = "launcher_prefs"
+
         /** Paquetes ficticios que identifican a las pseudo-apps. */
         const val CONFIG_PKG = "__dotrino_config__"
         const val HIDDEN_PKG = "__dotrino_hidden__"
