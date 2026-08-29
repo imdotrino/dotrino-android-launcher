@@ -608,7 +608,7 @@ private fun ManageScreen(
         // Moneda de soporte arriba (fuera del LazyColumn) para que sea lo primero
         // visible y el WebView no quede en blanco al reciclarse en la lista.
         Text(
-            "Apoyá el proyecto",
+            "Apoya el proyecto",
             color = Color.White,
             style = MaterialTheme.typography.titleSmall,
             modifier = Modifier.padding(top = 8.dp, bottom = 4.dp)
@@ -676,7 +676,7 @@ private fun ManageScreen(
                     modifier = Modifier.padding(vertical = 10.dp)
                 )
                 Text(
-                    "Elegí qué apps ocultar",
+                    "Elige qué apps ocultar",
                     color = Color.White,
                     style = MaterialTheme.typography.titleSmall,
                     modifier = Modifier.padding(bottom = 4.dp)
@@ -725,7 +725,7 @@ private fun PinDialog(
             Column {
                 if (isSetup) {
                     Text(
-                        "Definí un PIN (4 a 8 dígitos) para entrar al menú de apps ocultas.",
+                        "Define un PIN (4 a 8 dígitos) para entrar al menú de apps ocultas.",
                         style = MaterialTheme.typography.bodySmall
                     )
                     Spacer(Modifier.height(8.dp))
