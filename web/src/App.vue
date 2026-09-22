@@ -100,6 +100,7 @@ function leerIdioma () {
 <template>
   <div class="page">
     <dotrino-topbar
+      profile
       brand="Dotrino Launcher"
       icon="/icon.svg"
       no-back
