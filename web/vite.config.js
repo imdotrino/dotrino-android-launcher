@@ -2,6 +2,7 @@ import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import { VitePWA } from 'vite-plugin-pwa'
 import { execSync } from 'node:child_process'
+import prerender from '@dotrino/prerender/vite'
 
 let commit = 'dev'
 try { commit = execSync('git rev-parse --short HEAD').toString().trim() } catch { /* sin git */ }
@@ -13,6 +14,8 @@ const commitMeta = {
 export default defineConfig({
   base: '/',
   plugins: [
+    // El HTML llega con contenido para quien lo lee sin ejecutar JavaScript.
+    prerender(),
     // Los Web Components del ecosistema (<dotrino-topbar> y compañía) son elementos
     // nativos, no componentes Vue: sin esto Vue avisa de que no los resuelve.
     vue({ template: { compilerOptions: { isCustomElement: (tag) => tag.startsWith('dotrino-') } } }),
