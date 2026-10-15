@@ -2,6 +2,7 @@ import { createApp } from 'vue'
 import { registerSW } from 'virtual:pwa-register'
 import '@dotrino/topbar'   // trae marca + idioma + <dotrino-support> (§5)
 import App from './App.vue'
+import '@dotrino/theme/theme.css'
 import './style.css'
 
 const updateSW = registerSW({ immediate: true })
